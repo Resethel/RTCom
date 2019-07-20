@@ -1,4 +1,5 @@
-"""Docstring."""
+"""Init file for package RTCom."""
 
-__version__ = "0.1.0"
+from RTCom import PCF8523
+
 __all__ = ["PCF8523"]

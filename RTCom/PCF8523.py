@@ -1,6 +1,4 @@
-#
-#
-"""Docstring."""
+"""RTC clock module for PCF8523 real time clock."""
 
 from machine import I2C
 import struct

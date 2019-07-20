@@ -1,6 +1,4 @@
-#
-#
-"""Main function."""
+"""Exemple file for PCF82523 real time clock module."""
 
 from RTCom import PCF8523
 import time
@@ -8,7 +6,7 @@ import time
 
 def main():
     """
-    Test the code.
+    Set up an RTC (PCF8523) of Rick and Morty first arrival in the future.
     """
     rtc_clock = PCF8523.RTC()
 
@@ -24,22 +22,26 @@ def main():
     print("Control 2: {:08b}".format(rtc_clock.__read_register(PCF8523._REGISTER_CONTROL_2)))
     print("Control 3: {:08b}".format(rtc_clock.__read_register(PCF8523._REGISTER_CONTROL_3)))
 
-    while True:
-        # Prints the time as a datetime tuple
-        print(rtc_clock.now())
+    try:
+        # Main Loop
+        while True:
 
-        # Prints the time in a human readable format
-        sec = rtc_clock.get_second()
-        min = rtc_clock.get_minute()
-        hour = rtc_clock.get_hour()
-        day = rtc_clock.get_day()
-        weekday = rtc_clock.get_weekday(as_str=True)
-        month = rtc_clock.get_month(as_str=True)
-        year = rtc_clock.get_year()
-        print("{}h {}min {}s - {}, {} {} {}".format(hour, min, sec, weekday, month, day, year))
+            # Prints the time as a datetime tuple
+            print(rtc_clock.now())
 
-        time.sleep_ms(1000)
+            # Prints the time in a human readable format
+            sec = rtc_clock.get_second()
+            min = rtc_clock.get_minute()
+            hour = rtc_clock.get_hour()
+            day = rtc_clock.get_day()
+            weekday = rtc_clock.get_weekday(as_str=True)
+            month = rtc_clock.get_month(as_str=True)
+            year = rtc_clock.get_year()
+            print("{}h {}min {}s - {}, {} {} {}".format(hour, min, sec, weekday, month, day, year))
 
+            time.sleep_ms(1000)
+    except KeyboardInterrupt:
+        print("Exiting. Press Enter to enter the REPL")
 # End def main
 
 
